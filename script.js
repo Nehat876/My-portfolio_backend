@@ -12,3 +12,8 @@ function submitForm() {
             "Please fill all fields!";
     }
 }
+fetch("https://my-portfolio-backend-1-vvgg.onrender.com", {
+  method: "GET"
+})
+.then(res => res.text())
+.then(data => console.log(data));
