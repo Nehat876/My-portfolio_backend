@@ -16,4 +16,4 @@ fetch("https://my-portfolio-backend-qs2n.onrender.com", {
   method: "GET"
 })
 .then(res => res.text())
-.then(data => console.log(data));
+.then(data => console.log(data)); 
