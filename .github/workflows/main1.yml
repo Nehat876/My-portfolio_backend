@@ -1,0 +1,46 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Start server (test run)
+      - name: Start server
+        run: |
+          node server.js &
+          sleep 5
+
+      # 5. Check if server is running
+      - name: Test server
+        run: curl http://localhost:5000
+
+      # 6. Stop server
+      - name: Stop server
+        run: pkill node || true
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Dummy Deploy Step
+        run: echo "Deployment successful!"
