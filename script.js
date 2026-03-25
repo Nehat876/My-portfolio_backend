@@ -12,7 +12,7 @@ function submitForm() {
             "Please fill all fields!";
     }
 }
-fetch("https://my-portfolio-backend-1-vvgg.onrender.com", {
+fetch("https://my-portfolio-backend-qs2n.onrender.com", {
   method: "GET"
 })
 .then(res => res.text())
